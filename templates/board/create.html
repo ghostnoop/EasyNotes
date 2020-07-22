@@ -1,0 +1,18 @@
+{% extends 'board/base.html' %}
+
+{% block title %}
+Добавить заметку
+{% endblock %}
+
+{% block content %}
+<h1>Создать заметку</h1>
+<form method="post" >
+      {% csrf_token %}
+      {{form.note_title}}<br>
+      {{form.note_text}}<br>
+      {{ form.media }}
+      {{form.note_tags}}<br>
+      <button type="submit" class="btn btn-success">Добавить</button>
+      <span>{{error}}</span>
+</form>
+{% endblock %}

@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>Login</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--===============================================================================================-->
+
+    <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animsition/css/animsition.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/daterangepicker/daterangepicker.css' %}">
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+
+    <!--===============================================================================================-->
+
+</head>
+
+
+<div class="limiter">
+
+    <div class="container-login100">
+
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <img src="{% static 'login/images/logo500.png' %}" style="padding: 20%" class="img-fluid" alt="Responsive image">
+
+            <form class="login100-form validate-form flex-sb flex-w" method="POST" action="../signup/">
+
+					<span class="login100-form-title p-b-51">
+
+						Registration
+
+					</span>
+
+                {% csrf_token %}
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Name is required">
+
+                    <input id="name_text" class="input100" type="text" name="name" placeholder="Name">
+
+                    <span class="focus-input100"></span>
+
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Email is required">
+
+                    <input id="email_text" class="input100" type="text" name="email" placeholder="Email">
+
+                    <span class="focus-input100"></span>
+
+                </div>
+
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+
+                    <input id="pass1" class="input100" type="password" name="pass" placeholder="Password">
+
+                    <span class="focus-input100"></span>
+
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+
+                    <input id="pass2" class="input100" type="password" name="reppass" placeholder="Repeat Password">
+
+                    <span class="focus-input100"></span>
+
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div>
+                    </div>
+                    <div>
+                        <a href="{% url 'notes:index' %}" class="txt1">
+                            Login?
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+
+                    <button id="reg_btn" type="submit" class="login100-form-btn">
+
+                        Register
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Предпупреждение.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ ans_mess }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+
+<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+
+<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+
+<!--===============================================================================================-->
+
+<script>
+    {% if ctx %}
+
+        document.getElementById('name_text').value = "{{ ctx.name }}";
+        document.getElementById('email_text').value = "{{ ctx.email }}";
+        document.getElementById('pass1').value = "{{ ctx.pass }}";
+        document.getElementById('pass2').value = "{{ ctx.reppass }}";
+
+        $(document).ready(function () {
+            $('.bd-example-modal-sm').modal('show').delay(500).modal('hide');
+
+            setTimeout(function () {
+                $('.bd-example-modal-sm').modal('hide');
+            }, 5000);
+        });
+
+    {% endif %}
+
+</script>
+
+
+<script src="{% static 'login/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

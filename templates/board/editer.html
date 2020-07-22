@@ -1,0 +1,21 @@
+{% extends 'board/base.html' %}
+
+{% block title %}
+    Изменение заметки
+{% endblock %}
+
+{% block content %}
+    <h1>Изменить заметку</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ editform.note_title }}<br>
+        {{ editform.note_text| safe }}
+        {{ form.media }}<br>
+        {{ editform.note_tags }}<br>
+        <button type="submit" class="btn btn-info">Сохранить</button>
+        <span>{{ error }}</span>
+    </form>
+
+
+{% endblock %}
+

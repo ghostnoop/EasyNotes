@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'board/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'board/style.css' %}">
+
+
+    <style>
+
+        body {
+            background-color: #f0f2f7
+        }
+
+        .notes {
+            border-top-right-radius: 42px
+        }
+
+        .dot {
+            height: 6px;
+            width: 6px;
+            margin-left: 8px;
+            margin-right: 3px;
+            margin-top: 2px;
+            background-color: rgb(91, 92, 91);
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .review-text {
+            background: #e3e1eb
+        }
+
+        .info {
+            color: #8c8b9a
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="container mt-1">
+    <div class="d-flex justify-content-center row ">
+        <div class="col-md-10 shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="p-6 bg-white notes ">
+                <div class="d-flex flex-row align-items-center notes-title ">
+                    <h4 class="text-break">{{ notes.title }}</h4>
+                    <ul class="list-group list-group-flush">
+                        {% for a in notes.tags %}
+                            <span class="px-2 review-text ml-2 rounded bg-info text-light mr-auto mb-1">{{ a }}</span>
+                        {% endfor %}
+                    </ul>
+
+
+                </div>
+                <div class="d-flex flex-row align-items-center align-content-center">
+                    <span class="rounded info ">{{ notes.date }}</span><span
+                        class="dot"></span></div>
+            </div>
+            <div class="text-break bg-white p-1">
+                <hr>
+                {{ notes.text | safe }}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

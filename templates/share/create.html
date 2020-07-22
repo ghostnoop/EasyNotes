@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'js/jquery.min.js' %}"/>
+    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'board/bootstrap.weber.css' %}"/>
+    <link rel="stylesheet" href="{% static 'board/share.css' %}"/>
+</head>
+<body>
+<div id="wrap">
+    <header id="header-text-5" class="pt-50 pb-50 pt-md-100 pb-md-100 pt-lg-200 pb-lg-200 light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-auto order-md-2">
+                    <img class="mw-100 mb-50 mb-md-0" alt="logo" src="{% static 'images/logo-4.png' %}" height="120">
+                </div>
+                <div class="col-md order-md-1">
+                    <h3><strong onclick="copyToClipboard()">{{ link }}</strong></h3>
+                    <h4 class="text-secondary">По этой ссылке можно увидеть вашу заметку. Чтобы скопировать кликните на ссылку.</h4>
+                </div>
+            </div>
+        </div>
+        <div class="bg-wrap">
+            <div class="bg"></div>
+        </div>
+    </header>
+</div>
+<script>
+    function copyToClipboard() {
+
+        // Create a "hidden" input
+        var aux = document.createElement("input");
+
+        // Assign it the value of the specified element
+        aux.setAttribute("value", "{{ full_link }}");
+
+        // Append it to the body
+        document.body.appendChild(aux);
+
+        // Highlight its content
+        aux.select();
+
+        // Copy the highlighted text
+        document.execCommand("copy");
+
+        // Remove it from the body
+        document.body.removeChild(aux);
+
+    }
+</script>
+</body>
+</html>
